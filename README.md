@@ -16,8 +16,10 @@
 - it verifies the base accurate 
 ### What it can't do
 - It does not operate in bases above **base 10**
+- it does not handle exceptions
 ### To be done
 - Ability to operate in base above 10 at least to base 16
+- Handle exceptions
 
 
 **This program is as a result of inspiration from one of my classes however I did write this program by myself**
