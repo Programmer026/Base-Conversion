@@ -14,16 +14,24 @@ where we were talking about binary, octal, Decimal, Hexadecimal.
 @parameter: The number to convert, The base of the number to be converted, Count to keep track of how many recursion steps
 @returns: it returns a number in base 10
 """
+
+def toDecimalConvertionAN(number, oldbase, count, length):
+    if(count > length):
+        return 0
+    num = number[length-count]
+    num = convertLetter(num)
+    return num*(oldbase**count) + toDecimalConvertionAN(number, oldbase, count+1, length)
+            
+
 def toDecimalConvertion(number, oldbase, count):
     if(number == 0):
         return 0
     return ((number%10) * (oldbase**count)) + toDecimalConvertion(number//10, oldbase, count+1)
-   
-    
+
 """
 @parameter: The number to convert, The base of the number to be converted to
 @returns: it returns a String containing numbers in the base specified
-"""    
+"""
 def toBaseConversion(number, newBase):
     if(number == 0):
         return ""
@@ -51,6 +59,19 @@ def verifyBaseDecimal(number):
          return False
     return True
 
+def convertNumber(number):
+    dict = {10 : "A", 11 : "B", 12 : "C", 13 : "D", 14 : "E", 15 : "F"}
+    if(dict[number]):
+        return dict[number]
+    return number
+
+def convertLetter(letter):
+    dict = {"A" : 10, "B" : 11, "C" : 12, "D" : 13, "E" : 14, "F" : 15}
+    if(letter in dict):
+        return dict[letter]
+    return int(letter)
+
+##MAIN
 #Ask user for input
 prompt = input("Would you like to use Yemi Base coonversion program\nPlease enter Yes or No: ").lower()
 
@@ -93,6 +114,11 @@ while(prompt == "yes"):
 #Ending Statement
 print("\nThank you for using my Base Convertion. GoodBye!!!")
 
-"""print(toDecimalConvertion(101,2,0))
+print()
+print(toDecimalConvertionAN("11", 2, 0, 1))
+
+"""
+print(toDecimalConvertion(101,2,0))
 print(toBaseConversion(5,3))
-print(verifyBase(1031,2))"""
+print(verifyBase(1031,2))
+"""
